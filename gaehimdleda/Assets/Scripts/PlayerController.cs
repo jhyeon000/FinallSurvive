@@ -70,7 +70,9 @@ public class PlayerController : MonoBehaviour {
         originPosY = theCamera.transform.localPosition.y;
         applyCrouchPosY = originPosY;
     }
-	void Update () {
+	void Update () 
+		 if(isActivated && GameManager.canPlayerMove)
+	{
 
         IsGround();
         TryJump();
