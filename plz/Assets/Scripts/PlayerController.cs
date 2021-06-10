@@ -58,7 +58,8 @@ public class PlayerController : MonoBehaviour {
     private Crosshair theCrosshair;
     private StatusController theStatusController;
 
-	void Start () {
+	void Start () 
+	{
         capsuleCollider = GetComponent<CapsuleCollider>();
         myRigid = GetComponent<Rigidbody>();
         theGunController = FindObjectOfType<GunController>();
@@ -141,7 +142,7 @@ public class PlayerController : MonoBehaviour {
     private void IsGround()
     {
         isGround = Physics.Raycast(transform.position, Vector3.down, capsuleCollider.bounds.extents.y + 0.3f);
-        //theCrosshair.JumpingAnimation(!isGround);
+        theCrosshair.JumpingAnimation(!isGround);
     }
 
 
