@@ -71,21 +71,23 @@ public class PlayerController : MonoBehaviour {
         applyCrouchPosY = originPosY;
     }
 	void Update () 
-		 if(isActivated && GameManager.canPlayerMove)
-	{
-
-        IsGround();
-        TryJump();
-        TryRun();
-        TryCrouch();
-        Move();
-        MoveCheck();
-        if (!Inventory.inventoryActivated)
+    { 
+        if(isActivated && GameManager.canPlayerMove)
         {
+            IsGround();
+            TryJump();
+            TryRun();
+            TryCrouch();
+            Move();
+            MoveCheck();
+            if (!Inventory.inventoryActivated)
+            {
             CameraRotation();
             CharacterRotation();
-        }
-	}
+            }
+
+	    }
+    }
 
     // 앉기 시도
     private void TryCrouch()
