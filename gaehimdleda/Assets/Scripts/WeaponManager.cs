@@ -6,26 +6,26 @@ using UnityEngine;
 public class WeaponManager : MonoBehaviour
 {
 
-    // ¹«±â Áßº¹ ±³Ã¼ ½ÇÇà ¹æÁö.
+    // ë¬´ê¸° ì¤‘ë³µ êµì²´ ì‹¤í–‰ ë°©ì§€.
     public static bool isChangeWeapon = false;
 
-    // ÇöÀç ¹«±â¿Í ÇöÀç ¹«±âÀÇ ¾Ö´Ï¸ŞÀÌ¼Ç.
+    // í˜„ì¬ ë¬´ê¸°ì™€ í˜„ì¬ ë¬´ê¸°ì˜ ì• ë‹ˆë©”ì´ì…˜.
     public static Transform currentWeapon;
     public static Animator currentWeaponAnim;
 
-    // ÇöÀç ¹«±âÀÇ Å¸ÀÔ.
+    // í˜„ì¬ ë¬´ê¸°ì˜ íƒ€ì….
     [SerializeField]
     private string currentWeaponType;
 
 
-    // ¹«±â ±³Ã¼ µô·¹ÀÌ, ¹«±â ±³Ã¼°¡ ¿ÏÀüÈ÷ ³¡³­ ½ÃÁ¡.
+    // ë¬´ê¸° êµì²´ ë”œë ˆì´, ë¬´ê¸° êµì²´ê°€ ì™„ì „íˆ ëë‚œ ì‹œì .
     [SerializeField]
     private float changeWeaponDelayTime;
     [SerializeField]
     private float changeWeaponEndDelayTime;
 
 
-    // ¹«±â Á¾·ùµé ÀüºÎ °ü¸®.
+    // ë¬´ê¸° ì¢…ë¥˜ë“¤ ì „ë¶€ ê´€ë¦¬.
     [SerializeField]
     private Gun[] guns;
     [SerializeField]
@@ -35,13 +35,13 @@ public class WeaponManager : MonoBehaviour
     [SerializeField]
     private CloseWeapon[] pickaxes;
 
-    // °ü¸® Â÷¿ø¿¡¼­ ½±°Ô ¹«±â Á¢±ÙÀÌ °¡´ÉÇÏµµ·Ï ¸¸µê.
+    // ê´€ë¦¬ ì°¨ì›ì—ì„œ ì‰½ê²Œ ë¬´ê¸° ì ‘ê·¼ì´ ê°€ëŠ¥í•˜ë„ë¡ ë§Œë“¦.
     private Dictionary<string, Gun> gunDictionary = new Dictionary<string, Gun>();
     private Dictionary<string, CloseWeapon> handDictionary = new Dictionary<string, CloseWeapon>();
     private Dictionary<string, CloseWeapon> axeDictionary = new Dictionary<string, CloseWeapon>();
     private Dictionary<string, CloseWeapon> pickaxeDictionary = new Dictionary<string, CloseWeapon>();
 
-    // ÇÊ¿äÇÑ ÄÄÆ÷³ÍÆ®.
+    // í•„ìš”í•œ ì»´í¬ë„ŒíŠ¸.
     [SerializeField]
     private GunController theGunController;
     [SerializeField]
@@ -79,7 +79,7 @@ public class WeaponManager : MonoBehaviour
         if (!isChangeWeapon)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
-                StartCoroutine(ChangeWeaponCoroutine("HAND", "¸Ç¼Õ"));
+                StartCoroutine(ChangeWeaponCoroutine("HAND", "ë§¨ì†"));
             else if (Input.GetKeyDown(KeyCode.Alpha2))
                 StartCoroutine(ChangeWeaponCoroutine("GUN", "SubMachineGun1"));
             else if (Input.GetKeyDown(KeyCode.Alpha3))
@@ -89,7 +89,7 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-    // ¹«±â ±³Ã¼ ÄÚ·çÆ¾.
+    // ë¬´ê¸° êµì²´ ì½”ë£¨í‹´.
     public IEnumerator ChangeWeaponCoroutine(string _type, string _name)
     {
         isChangeWeapon = true;
@@ -106,7 +106,7 @@ public class WeaponManager : MonoBehaviour
         isChangeWeapon = false;
     }
 
-    // ¹«±â Ãë¼Ò ÇÔ¼ö.
+    // ë¬´ê¸° ì·¨ì†Œ í•¨ìˆ˜.
     private void CancelPreWeaponAction()
     {
         switch (currentWeaponType)
@@ -128,7 +128,7 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-    // ¹«±â ±³Ã¼ ÇÔ¼ö.
+    // ë¬´ê¸° êµì²´ í•¨ìˆ˜.
     private void WeaponChange(string _type, string _name)
     {
         if (_type == "GUN")
@@ -139,5 +139,22 @@ public class WeaponManager : MonoBehaviour
             theAxeController.CloseWeaponChange(axeDictionary[_name]);
         else if (_type == "PICKAXE")
             thePickaxeController.CloseWeaponChange(pickaxeDictionary[_name]);
+    }
+
+    public IEnumerator WeaponInCoroutine()
+    {
+        isChangeWeapon = true;
+        currentWeaponAnim.SetTrigger("Weapon_Out");
+
+        yield return new WaitForSeconds(changeWeaponDelayTime);
+
+        currentWeapon.gameObject.SetActive(false);
+    }
+
+    public void WeaponOut()
+    {
+        isChangeWeapon = false;
+
+        currentWeapon.gameObject.SetActive(true);
     }
 }
