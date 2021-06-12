@@ -5,27 +5,27 @@ using UnityEngine;
 public class WeaponSway : MonoBehaviour
 {
 
-    // ±âÁ¸ À§Ä¡
+    // ê¸°ì¡´ ìœ„ì¹˜
     private Vector3 originPos;
 
-    // ÇöÀç À§Ä¡.
+    // í˜„ì¬ ìœ„ì¹˜.
     private Vector3 currentPos;
 
-    // sway ÇÑ°è.
+    // sway í•œê³„.
     [SerializeField]
     private Vector3 limitPos;
 
-    // Á¤Á¶ÁØ sway ÇÑ°è.
+    // ì •ì¡°ì¤€ sway í•œê³„.
     [SerializeField]
     private Vector3 fineSightLimitPos;
 
 
-    // ºÎµå·¯¿î ¿òÁ÷ÀÓ Á¤µµ.
+    // ë¶€ë“œëŸ¬ìš´ ì›€ì§ì„ ì •ë„.
     [SerializeField]
     private Vector3 smoothSway;
 
 
-    // ÇÊ¿äÇÑ ÄÄÆ÷³ÍÆ®/
+    // í•„ìš”í•œ ì»´í¬ë„ŒíŠ¸/
     [SerializeField]
     private GunController theGunController;
 
@@ -39,7 +39,7 @@ public class WeaponSway : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Inventory.inventoryActivated)
+        if (GameManager.canPlayerMove)
         {
               TrySway();
 		}
