@@ -1,4 +1,6 @@
 # FinallSurvive
+![Scene_Start_last](https://user-images.githubusercontent.com/84574269/121793709-e65eab00-cc3c-11eb-91d7-6b05f17f555a.png)
+test
 
 ## 프로젝트명
 **베니의 불시착 Benny's crash landing**
