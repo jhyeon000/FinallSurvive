@@ -1,8 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
     // 스피드 조정 변수
     [SerializeField]
@@ -11,6 +12,12 @@ public class PlayerController : MonoBehaviour {
     private float runSpeed;
     [SerializeField]
     private float crouchSpeed;
+    [SerializeField]
+    private float swimSpeed;
+    [SerializeField]
+    private float swimFastSpeed;
+    [SerializeField]
+    private float upSwimSpeed;
 
     private float applySpeed;
 
@@ -58,7 +65,8 @@ public class PlayerController : MonoBehaviour {
     private Crosshair theCrosshair;
     private StatusController theStatusController;
 
-	void Start () {
+    void Start()
+    {
         capsuleCollider = GetComponent<CapsuleCollider>();
         myRigid = GetComponent<Rigidbody>();
         theGunController = FindObjectOfType<GunController>();
@@ -70,13 +78,19 @@ public class PlayerController : MonoBehaviour {
         originPosY = theCamera.transform.localPosition.y;
         applyCrouchPosY = originPosY;
     }
-	void Update () 
+
+    void Update()
     {
         if (GameManager.canPlayerMove)
         {
+            WaterCheck();
             IsGround();
             TryJump();
-            TryRun();
+            if (!GameManager.isWater)
+            {
+                TryRun();
+            }
+
             TryCrouch();
             Move();
             MoveCheck();
@@ -84,6 +98,20 @@ public class PlayerController : MonoBehaviour {
             CharacterRotation();
         }
     }
+
+    private void WaterCheck()
+    {
+        if (GameManager.isWater)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+                applySpeed = swimFastSpeed;
+            else
+                applySpeed = swimSpeed;
+
+        }
+
+    }
+
 
     // 앉기 시도
     private void TryCrouch()
@@ -124,7 +152,7 @@ public class PlayerController : MonoBehaviour {
         float _posY = theCamera.transform.localPosition.y;
         int count = 0;
 
-        while(_posY != applyCrouchPosY)
+        while (_posY != applyCrouchPosY)
         {
             count++;
             _posY = Mathf.Lerp(_posY, applyCrouchPosY, 0.3f);
@@ -148,10 +176,15 @@ public class PlayerController : MonoBehaviour {
     // 점프 시도
     private void TryJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGround && theStatusController.GetCurrentSP() > 0)
-        {
+        if (Input.GetKeyDown(KeyCode.Space) && isGround && theStatusController.GetCurrentSP() > 0 && !GameManager.isWater)
             Jump();
-        }
+        else if (Input.GetKey(KeyCode.Space) && GameManager.isWater)
+            UpSwim();
+    }
+
+    private void UpSwim()
+    {
+        myRigid.velocity = transform.up * upSwimSpeed;
     }
 
 
@@ -270,7 +303,7 @@ public class PlayerController : MonoBehaviour {
         Vector3 eulerValue = direction.eulerAngles;
         float destinationX = eulerValue.x;
 
-        while(Mathf.Abs(destinationX - currentCameraRotationX) >= 0.5f)
+        while (Mathf.Abs(destinationX - currentCameraRotationX) >= 0.5f)
         {
             eulerValue = Quaternion.Lerp(theCamera.transform.localRotation, direction, 0.3f).eulerAngles;
             theCamera.transform.localRotation = Quaternion.Euler(eulerValue.x, 0f, 0f);
@@ -299,5 +332,3 @@ public class PlayerController : MonoBehaviour {
         return isGround;
     }
 }
-
-

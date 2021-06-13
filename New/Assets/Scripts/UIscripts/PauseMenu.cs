@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject go_BaseUi; // ÀÏ½Ã Á¤Áö UI ÆĞ³Î
+    [SerializeField] private GameObject go_BaseUi; // ì¼ì‹œ ì •ì§€ UI íŒ¨ë„
+    [SerializeField] private SaveNLoad theSaveNLoad;
 
     void Update()
     {
@@ -21,29 +22,31 @@ public class PauseMenu : MonoBehaviour
     {
         GameManager.isPause = true;
         go_BaseUi.SetActive(true);
-        Time.timeScale = 0f; // ½Ã°£ÀÇ Èå¸§ ¼³Á¤. 0¹è¼Ó. Áï ½Ã°£À» ¸ØÃã.
+        Time.timeScale = 0f; // ì‹œê°„ì˜ íë¦„ ì„¤ì •. 0ë°°ì†. ì¦‰ ì‹œê°„ì„ ë©ˆì¶¤.
     }
 
     private void CloseMenu()
     {
         GameManager.isPause = false;
         go_BaseUi.SetActive(false);
-        Time.timeScale = 1f; // 1¹è¼Ó (Á¤»ó ¼Óµµ)
+        Time.timeScale = 1f; // 1ë°°ì† (ì •ìƒ ì†ë„)
     }
 
     public void ClickSave()
     {
-        Debug.Log("¼¼ÀÌºê");
+        Debug.Log("ì„¸ì´ë¸Œ");
+        theSaveNLoad.SaveData();
     }
 
     public void ClickLoad()
     {
-        Debug.Log("·Îµå");
+        Debug.Log("ë¡œë“œ");
+        theSaveNLoad.LoadData();
     }
 
     public void ClickExit()
     {
-        Debug.Log("°ÔÀÓ Á¾·á");
+        Debug.Log("ê²Œì„ ì¢…ë£Œ");
         Application.Quit();
     }
 }
