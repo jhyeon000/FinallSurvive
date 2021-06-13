@@ -1,6 +1,6 @@
 # FinallSurvive
 ![Scene_Start_last](https://user-images.githubusercontent.com/84574269/121793709-e65eab00-cc3c-11eb-91d7-6b05f17f555a.png)
-test
+
 
 ## 프로젝트명
 **베니의 불시착 Benny's crash landing**
@@ -126,3 +126,52 @@ Pause 메뉴 : N
 -돼지를 죽여서 나오는 고기 = 배고픔 +50회복
 
 ## 사용한 에셋
+### 1.베니
+
+
+
+![image01](https://user-images.githubusercontent.com/84654329/121799711-8c73da80-cc68-11eb-8cfa-6074a9be8e1c.png)
+이미지만 차용
+
+
+
+### 2. 환경
+![image02](https://user-images.githubusercontent.com/84654329/121799746-c218c380-cc68-11eb-9a9a-fc1026d7328c.png)
+에셋의 환경에 MaterialS를 변경하여 사용
+
+
+
+### 3. 파티클
+![image03](https://user-images.githubusercontent.com/84654329/121799783-f9877000-cc68-11eb-8c77-3128e952d124.png)
+
+
+
+
+### 4. 우주선
+![image04](https://user-images.githubusercontent.com/84654329/121799788-fee4ba80-cc68-11eb-81b7-12dc114aca58.png)
+
+
+
+
+### 5. 우주선 기어
+![image05](https://user-images.githubusercontent.com/84654329/121799789-00ae7e00-cc69-11eb-86f1-0b8e9645ead3.png)
+
+
+
+
+
+## 게임 개발 과정
+(https://keidy.tistory.com/254) 올려주신 강의 34강 모두를 따라가 구현한 베이스에 추가적 기능을 구현했다. 
+
+
+우주선 기어 찾아서 우주선 고치기, 난폭한 돼지와 약한 돼지, 돼지를 죽이면 고기로 변하고 그 고기를 먹어 배고픔을 해결하는 것을 추가로 구현했다. 또한 스타트 씬, 게임 설명 씬, 엔딩 애니메이션, 게임오버씬을 직접 제작하여 구현했고 UI Image를 만들었다. 
+
+
+
+
+초반에 팀원끼리 유니티 기능에 있는 콜라보레이터를 사용해서 게임을 개발하다가 같은 부분을 만지거나 팀원에게 보내고 받는 과정에서 오류가 나 한쪽 파일이 날아가는 시행 착오를 겪었다. 그 후 GitHub Desktop을 사용해서 GitHub에 파일을 올리고 올려진 파일을 GitHub Desktop을 통해 팀원끼리 같은 폴더를 공유해 가져오는 방식으로 게임을 개발해나갔고 중요한 파일은 유니티 내 Import package 기능을 통해 서로 만든 부분을 합쳤다. 
+
+
+
+
+
