@@ -159,6 +159,13 @@ Pause 메뉴 : N
 ![image05](https://user-images.githubusercontent.com/84654329/121799789-00ae7e00-cc69-11eb-86f1-0b8e9645ead3.png)
 
 
+### 6. 기타 에셋은 올려주신 강의에서 공유하는 에셋을 사용
+
+
+
+https://drive.google.com/open?id=1L1yRhgZDrULdKrqh3_KgIiNHQZ6-Xn0e
+
+
 
 
 
