@@ -170,6 +170,10 @@ https://drive.google.com/open?id=1L1yRhgZDrULdKrqh3_KgIiNHQZ6-Xn0e
 
 
 ## 게임 개발 과정
+시나리오 기획 → 레퍼런스 구현 → 추가 콘텐츠 구현 → 오류 수정
+
+
+
 (https://keidy.tistory.com/254) 올려주신 강의 34강 모두를 따라가 구현한 베이스에 추가적 기능을 구현했다. 
 
 
